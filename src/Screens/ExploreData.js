@@ -5,7 +5,7 @@ const Explore = () => {
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             <View style={{ backgroundColor: '#F0F8FF' }}>
-                <View style={{ marginTop: 10 }}>
+                <View style={{ marginTop: 11 }}>
                     {/* <TouchableOpacity style={{
             borderWidth:0.5,
             height:90,
