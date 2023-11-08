@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "554259319927",
+    "project_id": "stock-matics",
+    "storage_bucket": "stock-matics.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:554259319927:android:9e673f104e469640244a72",
+        "android_client_info": {
+          "package_name": "com.stockkmatrix"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD28xnSpr6JJAkhS1MFJd-yslkVMFxKd_U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,8 +1,12 @@
 import { StyleSheet, Text, TextInput, View, Image, FlatList } from 'react-native'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import BottomTabView from './BottomGrow';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+import SignUp from '../Authentication/SignUp';
+
 const Indices = [
     {
         id: 1,
@@ -25,10 +29,27 @@ const Indices = [
         num: 63900
     },
 ]
+
 const HomePage = ({ navigation }) => {
+    const [user, setUser] = useState(true)
+
+useEffect(()=>{
+    // auth().signOut()
+    firestore().collection('Users').doc(auth().currentUser.uid).get().then((doc)=>{
+        console.log("data--->", doc);
+        if(doc._data == undefined){
+            setUser(false)
+        }
+        else{
+            setUser(true)
+        }
+    })
+}, [])
+
     return (
+        user?
         <>
-            <View style={{ backgroundColor: '#F0F8FF' }}>
+            <View style={{ backgroundColor: '#fff',paddingHorizontal:10}}>
                 <View style={{ borderRadius: 30, borderWidth: 1, margin: 10, padding: 5, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                     <Image
                         source={require('../../assets/Mat.png')}
@@ -39,7 +60,7 @@ const HomePage = ({ navigation }) => {
                         <TouchableOpacity
                             onPress={() => navigation.navigate('SearchContent')}
                         >
-                            <Text style={{ color: "black" }}>Search</Text>
+                            <Text style={{ color: "#000",fontSize:18,fontWeight:'600' }}>Search</Text>
                         </TouchableOpacity>
                     </View>
                     <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
@@ -54,7 +75,7 @@ const HomePage = ({ navigation }) => {
                     keyExtractor={(item) => item.id}
                     renderItem={({ item }) => {
                         return (
-                            <View style={{ height: 65, borderWidth: 0.5, borderRadius: 10, width: 150, margin: 10, justifyContent: 'center', alignItems: 'center', borderColor: '#D3D3D3' }}>
+                            <View style={{ height: 65, borderWidth: 1, borderRadius: 10, width: 150, margin: 10, justifyContent: 'center', alignItems: 'center', borderColor: '#000' }}>
                                 <Text style={{ textAlign: 'center', fontSize: 20, color: "black" }}>{item.name}</Text>
                                 <Text style={{ textAlign: 'center', fontSize: 20, color: "black" }}>{item.num}</Text>
                             </View>
@@ -64,6 +85,8 @@ const HomePage = ({ navigation }) => {
             </View>
             <BottomTabView />
         </>
+        :
+        <SignUp/>
     )
 }
 export default HomePage

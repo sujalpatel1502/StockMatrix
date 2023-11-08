@@ -21,7 +21,9 @@ const PriceChart = (props) => {
       'X-RapidAPI-Key': '1d4b4262d2mshc44d7816a8ca6bfp19ab11jsn295846e886b2',
       'X-RapidAPI-Host': 'real-time-quotes1.p.rapidapi.com'
     }
+   
   };
+
   const formatChartData = (data) => {
     const labels = data.map((item) => (item.date));
     const closeData = data.map((item) => parseFloat(item.close));
@@ -48,6 +50,7 @@ const PriceChart = (props) => {
     }
   }
   const chartFormattedData = formatChartData(data);
+  // console.log("dataaaaaaaaaaaaaaaaaa",data);
 
   const htmlContent = `
     <html>

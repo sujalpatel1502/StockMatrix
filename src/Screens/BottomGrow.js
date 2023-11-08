@@ -4,6 +4,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import Ionic from 'react-native-vector-icons/Ionicons';
 import { ScrollView } from 'react-native-gesture-handler';
 import ExploreData from './ExploreData';
+import UserHoldings from './UserHoldings';
 const BottomTabView = () => {
     const Tab = createMaterialTopTabNavigator();
     const Explore = () => {
@@ -13,17 +14,18 @@ const BottomTabView = () => {
     };
     const Holdings = () => {
         return (
-            <ScrollView showsVerticalScrollIndicator={false}>
-                <View
-                    style={{
-                        flexWrap: 'wrap',
-                        flexDirection: 'row',
-                        flex: 1,
-                    }}
-                >
-                    <Text>Holdings Screen</Text>
-                </View>
-            </ScrollView>
+            // <ScrollView showsVerticalScrollIndicator={false}>
+            //     <View
+            //         style={{
+            //             flexWrap: 'wrap',
+            //             flexDirection: 'row',
+            //             flex: 1,
+            //         }}
+            //     >
+            //         <Text>Holdings Screen</Text>
+            //     </View>
+            // </ScrollView>
+            <UserHoldings/>
         );
     };
     const Positions = () => {
@@ -66,7 +68,7 @@ const BottomTabView = () => {
                         flex: 1,
                     }}
                 >
-                    <Text>Watchlist Screen</Text>
+                    <Text style={styles.NameText}>Watchlist Screen</Text>
                 </View>
             </ScrollView>
         );
@@ -74,14 +76,17 @@ const BottomTabView = () => {
     return (
         <Tab.Navigator
             screenOptions={() => ({
+                
                 tabBarIndicatorStyle: {
-                    backgroundColor: '#F0F8FF'
+                    backgroundColor: '#000',
                 },
-                tabBarItemStyle: { borderWidth: 1, borderRadius: 30, margin: 10, borderColor: '#D3D3D3' },
+                tabBarLabelStyle:{color:'#000',fontSize:14,fontWeight:'500'},
+                tabBarItemStyle: { borderWidth: 1, borderRadius: 10, margin: 10, borderColor:'#000' },
                 tabBarStyle: {
                     width: '100%',
                     // height:'90%',
-                    backgroundColor: '#F0F8FF'
+                    backgroundColor: '#fff',
+                    paddingHorizontal:10
                 },
                 tabBarScrollEnabled: true,
                 // tabBarIndicator:false
@@ -127,5 +132,10 @@ const styles = StyleSheet.create({
         width: 50,
         borderRadius: 40,
     },
+    NameText:{
+    fontSize: 15,
+    fontWeight: '600',
+    color: '#000',
+    }
 });
 export default BottomTabView;
